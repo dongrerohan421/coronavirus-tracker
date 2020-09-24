@@ -1,4 +1,4 @@
-package com.covid.coronavirustracker.model;
+package com.covid.coronavirustracker.model.paging;
 
 import java.util.List;
 
