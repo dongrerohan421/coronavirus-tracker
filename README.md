@@ -7,7 +7,7 @@ This application scheduled everyday to fetch latest data from above data source.
 
 **Corona Virus Tracker preview:**
 
-![Alt text](corona_virus_tracker_application.png?raw=true "Swagger-UI")
+![Alt text](corona_virus_tracker_application.png?raw=true "Corona Virus Tracker UI")
 
 **To Build app:**
 ```$xslt
