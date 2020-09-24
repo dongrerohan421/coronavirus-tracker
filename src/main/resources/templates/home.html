@@ -9,32 +9,39 @@
   </head>
 
   <body>
-    <h1>Corona Virus Tracker Application</h1>
-    <p>This application lists the current number of cases reported across globe</p>
-
-    <div class="jumbotron">
-      <h1 class="display-4" th:text="${totaleportedCases}"></h1>
-      <p class="lead">Total number of COVID-19 cases as of today</p>
-    </div>
-
     <div class="container">
+      <h1>Corona Virus Tracker Application</h1>
+      <p>This application lists the current number of cases reported across globe</p>
+
+      <div class="jumbotron">
+        <h1 class="display-4" th:text="${totaleportedCases}"></h1>
+        <p class="lead">Total number of COVID-19 cases as of today</p>
+        <hr class="my-4">
+        <p>
+          <span>New cases reported since previous day:</span>
+          <span th:text="${totalNewCases}"></span>
+        </p>
+      </div>
+
       <table class="table table-bordered">
           <caption>Global COVID-19 cases</caption>
         <thead class="thead-dark">
           <tr>
             <th scope="col">Province/State</th>
             <th scope="col">Country/Region</th>
-            <th scope="col">Total Cases Reported</th>
+            <th scope="col">Total cases reported</th>
+            <th scope="col">Changes since last day</th>
           </tr>
         </thead>
         <tr th:each="locationaStat : ${locationaStats}">
           <td th:text="${locationaStat.state}"></td>
           <td th:text="${locationaStat.country}"></td>
           <td th:text="${locationaStat.latestTotalCases}">0</td>
+          <td th:text="${locationaStat.diffFromPrevDay}">0</td>
         </tr>
       </table>
     </div>
-    
+
   </body>
 
 </html>
