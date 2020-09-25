@@ -1,6 +1,8 @@
 package com.covid.coronavirustracker.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.covid.coronavirustracker.model.LocationStats;
 import com.covid.coronavirustracker.service.CoronaVirusDataService;
@@ -26,5 +28,15 @@ public class HomeController {
         model.addAttribute("totaleportedCases", totalreportedCases);
         model.addAttribute("totalNewCases", totalNewCases);
         return HOME;
+    }
+
+    @GetMapping("/displayPieChart")
+    public String pieChart(Model model) {
+        List<LocationStats> allStats = coronaVirusDataService.getAllStats();
+        int totalreportedCases = allStats.stream().mapToInt(stat -> stat.getLatestTotalCases()).sum();
+        int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();
+        model.addAttribute("totaleportedCases", totalreportedCases);
+        model.addAttribute("totalNewCases", totalNewCases);
+        return "pieChart";
     }
 }
